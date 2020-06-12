@@ -1,3 +1,6 @@
 .ipynb_checkpoints/*
-data/*
+.idea/
+venv/
+data/
 
+!models/data/

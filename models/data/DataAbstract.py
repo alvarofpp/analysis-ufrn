@@ -31,7 +31,6 @@ class DataAbstract(ABC):
 
     def load(self) -> None:
         self.__load_files()
-        print('_files', self._files)
         dfs = [pd.read_csv(self.__get_dir() + filename, sep=self._sep) for filename in self._files]
         self._data = pd.concat(dfs, ignore_index=True)
 

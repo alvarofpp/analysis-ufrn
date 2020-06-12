@@ -8,9 +8,9 @@ from .data.Matricula import Matricula
 class DataCollection:
     def __init__(self):
         self._data = {
-            'docentes': Docente(),
-            'matriculas': Matricula(),
-            'turmas': Turma(),
+            #'docentes': Docente(),
+            #'matriculas': Matricula(),
+            #'turmas': Turma(),
             'cursos': Curso(),
         }
 

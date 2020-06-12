@@ -1,8 +1,8 @@
 import pandas as pd
-from .data.Curso import Curso
-from .data.Turma import Turma
-from .data.Docente import Docente
-from .data.Matricula import Matricula
+from .CursoModel import CursoModel
+from .TurmaModel import TurmaModel
+from .DocenteModel import DocenteModel
+from .MatriculaModel import MatriculaModel
 
 
 class DataCollection:
@@ -11,7 +11,7 @@ class DataCollection:
             #'docentes': Docente(),
             #'matriculas': Matricula(),
             #'turmas': Turma(),
-            'cursos': Curso(),
+            'cursos': CursoModel(),
         }
 
     def load(self):

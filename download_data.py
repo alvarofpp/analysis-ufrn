@@ -1,7 +1,14 @@
+from os import path
 from odufrn_downloader import ODUFRNDownloader
 
 
 ufrn_data = ODUFRNDownloader()
-packages = ['matriculas-componentes', 'turmas', 'docentes', 'cursos-ufrn']
+packages = [
+    'cursos-ufrn', 'turmas', 'matriculas-componentes',
+    'docentes', 'discentes',
+    'acervo-biblioteca', 'emprestimos-acervos-das-bibliotecas',
+]
 
-ufrn_data.download_packages(packages, 'data')
+for package in packages:
+    if not path.exists('data/{}'.format(package)):
+        ufrn_data.download_package(package, 'data')

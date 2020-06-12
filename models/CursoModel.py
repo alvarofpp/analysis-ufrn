@@ -1,9 +1,9 @@
 from .DataAbstract import DataAbstract
 
 
-class Curso(DataAbstract):
+class CursoModel(DataAbstract):
 
     def __init__(self):
         super().__init__()
-        self._dir = 'cursos-ufrn'
+        self.dir = 'cursos-ufrn'
         self.file_pattern = 'Cursos da UFRN'

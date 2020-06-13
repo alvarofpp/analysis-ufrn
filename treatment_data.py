@@ -1,21 +1,19 @@
 import json
-from models.DataCollection import DataCollection
+from AppJson import AppJson
+from treatments import BibliotecaTreatment
 
 
 # Variável que conterá os dados para o app
-app_json = {
-    'niveis_ensino': None,
-    'cursos': None,
+app_json = {}
+treatments = {
+    'acervo-biblioteca': BibliotecaTreatment(),
 }
 
-# Carrega os dados
-data_collection = DataCollection()
-data_collection.load()
+### BIBLIOTECA
+for key, treatment in treatments.items():
+    treatment.execute()
+    app_json[key] = treatment.get_data()
+    treatment.clear()
 
-# Select dos níveis de ensino
-niveis_ensino = sorted(data_collection.get_data_from('cursos')['nivel_ensino'].unique())
-app_json['niveis_ensino'] = [nivel_ensino.title() for nivel_ensino in niveis_ensino]
-
-# Cria o arquivo JSON
-with open('data.json', 'w') as outfile:
-    json.dump(app_json, outfile, indent=2, sort_keys=True)
+# Salva
+AppJson.save(app_json)

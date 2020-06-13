@@ -4,7 +4,7 @@ import pages
 PAGES = {
     "Início": pages.InicioPage(),
     "Biblioteca": pages.BibliotecaPage(),
-    "Cursos": pages.CursoPage(),
+    #"Cursos": pages.CursoPage(),
     "Professores": pages.ProfessorPage(),
 }
 

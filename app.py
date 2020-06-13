@@ -10,7 +10,6 @@ PAGES = {
 
 
 def main():
-    """Main function of the App"""
     st.sidebar.title("Menu de Navegação")
     selection = st.sidebar.radio("Ir para", list(PAGES.keys()))
     page = PAGES[selection]

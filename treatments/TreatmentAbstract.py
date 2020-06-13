@@ -7,8 +7,9 @@ class TreatmentAbstract(abc.ABC):
 
     def __init__(self, data_collection):
         self.app_data = {
-            'selects': {},
             'charts': {},
+            'data': {},
+            'selects': {},
         }
         self.data_collection = DataCollection(data_collection)
 

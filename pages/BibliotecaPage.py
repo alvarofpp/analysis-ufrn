@@ -1,5 +1,6 @@
-import streamlit as st
 import pandas as pd
+import altair as alt
+import streamlit as st
 from AppJson import AppJson
 from .PageView import PageView
 
@@ -27,9 +28,10 @@ class BibliotecaPage(PageView):
         - [acervo-exemplares](#http://dados.ufrn.br/dataset/acervo-biblioteca): contêm os dados acerca dos materiais presentes no acervo das bibliotecas da UFRN;
         - [emprestimos-acervos-das-bibliotecas](#http://dados.ufrn.br/dataset/emprestimos-acervos-das-bibliotecas): contêm os dados dos empréstimos feitos do acervo das bibliotecas da UFRN;
 
-        As análises estão divididas em duas seções:
+        As análises estão divididas em nas seguintes seções:
         - Acervo
         - Empréstimos
+        - Recomendações
         """, unsafe_allow_html=True)
 
     def section_01(self):
@@ -40,10 +42,10 @@ class BibliotecaPage(PageView):
         ## Qual biblioteca possui o maior acervo?
         Para responder essa pergunta, iremos realizar um processo simples de contagem dos exemplares nas bibliotecas.
         """)
+
+        # Quantidade de exemplares por biblioteca
         qeb = pd.DataFrame(self.app_data['charts']['quantidade_exemplares_por_biblioteca'].items(),
                            columns=['Biblioteca', 'Quantidade de Exemplares'])
-
-        # Gráfico com a quantidade de exemplares por biblioteca
         st.bar_chart(
             pd.Series(
                 qeb['Quantidade de Exemplares'].to_list(),
@@ -60,22 +62,54 @@ class BibliotecaPage(PageView):
             (biblioteca_max.at['Quantidade de Exemplares'] * 100) / qeb['Quantidade de Exemplares'].sum()
         ))
 
-        # Top 5
+        # Top 5 bibliotecas por tamanho do acervo
         st.write('Top 5 bibliotecas com maior quantidade de exemplares:')
         table_qeb = qeb.sort_values('Quantidade de Exemplares', ascending=False)[:5].reset_index()
         table_qeb.index = table_qeb.index + 1
         table_qeb.drop(columns=['index'], inplace=True)
         st.table(table_qeb)
 
-        # Livros mais emprestados
-        # Livros menos emprestados
+        # Exemplares por tipo
+        st.markdown('## Distribuição dos exemplares por tipo:')
+        qet = pd.DataFrame(self.app_data['charts']['quantidade_exemplares_por_tipo'].items(),
+                           columns=['Tipo', 'Quantidade de Exemplares'])
+        st.bar_chart(
+            pd.Series(
+                qet['Quantidade de Exemplares'].to_list(),
+                qet['Tipo'].to_list()
+            ),
+            height=500
+        )
+
+        # Tipo com maior acervo
+        tipo_max = qet.iloc[qet['Quantidade de Exemplares'].idxmax()]
+        msg_max = 'Algo interessante a observar é que um único tipo ({}) possui {:.2f}% do total de exemplares.'
+        st.write(msg_max.format(
+            tipo_max.at['Tipo'],
+            (tipo_max.at['Quantidade de Exemplares'] * 100) / qet['Quantidade de Exemplares'].sum()
+        ))
+
+        # Top 5 tipos por tamanho do acervo
+        st.write('Top 5 tipos com maior quantidade de exemplares:')
+        table_qet = qet.sort_values('Quantidade de Exemplares', ascending=False)[:5].reset_index()
+        table_qet.index = table_qet.index + 1
+        table_qet.drop(columns=['index'], inplace=True)
+        st.table(table_qet)
 
     def section_02(self):
         # st.bar_chart
         st.markdown("""
-        # Acervo
+        # Empréstimos
+        Aqui consta as análises acerca dos empréstimos de material das bibliotecas da UFRN.
         
         ## Quais são os livros mais e menos emprestados?
         
         """)
+        # Exemplares perdidos
+        # Quem mais perde exemplares?
+        # Recomendações de exemplares para a biblioteca
+        
+        # Livros mais emprestados
+        # Livros menos emprestados
+        # Quais cursos pegam mais livros emprestados
         pass

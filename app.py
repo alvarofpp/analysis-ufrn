@@ -1,5 +1,5 @@
 import streamlit as st
-import pages
+from views import pages
 
 
 @st.cache

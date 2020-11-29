@@ -19,7 +19,7 @@ class CursoPage(PageView):
             'professor': None,
         }
 
-    def template(self):
+    def intro(self):
         # Explicação sobre o trabalho
         st.write("""
         Aqui você pode realizar analises sobre os 

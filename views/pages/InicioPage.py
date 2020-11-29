@@ -8,7 +8,7 @@ class InicioPage(PageView):
         super().__init__()
         self.title = 'Início'
 
-    def template(self):
+    def intro(self):
         # Explicação sobre o trabalho
         st.markdown("""
         # Objetivo

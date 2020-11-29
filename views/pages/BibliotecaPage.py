@@ -12,7 +12,7 @@ class BibliotecaPage(PageView):
         self.title = 'Biblioteca'
         self.app_data = AppData.get_data_by_key('acervo-biblioteca')
 
-    def template(self):
+    def intro(self):
         # Explicação sobre o trabalho
         st.markdown("""
         # Introdução

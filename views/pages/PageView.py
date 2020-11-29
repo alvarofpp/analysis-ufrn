@@ -10,13 +10,13 @@ class PageView(abc.ABC):
     def render(self):
         st.title(self.title.upper())
         self.horizontal_rule()
-        self.template()
+        self.intro()
         for section in self.__get_sections():
             getattr(self, section)()
 
     @abc.abstractmethod
-    def template(self):
-        raise NotImplemented('You must implement the "template" method.')
+    def intro(self):
+        raise NotImplemented('You must implement the "intro" method.')
 
     def horizontal_rule(self):
         st.markdown('----------')

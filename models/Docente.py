@@ -1,7 +1,7 @@
-from .DataAbstract import DataAbstract
+from .ModelAbstract import ModelAbstract
 
 
-class DocenteModel(DataAbstract):
+class Docente(ModelAbstract):
 
     def __init__(self):
         super().__init__()

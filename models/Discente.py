@@ -1,7 +1,7 @@
-from .DataAbstract import DataAbstract
+from .ModelAbstract import ModelAbstract
 
 
-class DiscenteModel(DataAbstract):
+class Discente(ModelAbstract):
 
     def __init__(self):
         super().__init__()

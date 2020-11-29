@@ -1,11 +1,7 @@
 import pandas as pd
-from .CursoModel import CursoModel
-from .TurmaModel import TurmaModel
-from .DocenteModel import DocenteModel
-from .MatriculaModel import MatriculaModel
 
 
-class DataCollection:
+class Collection:
     def __init__(self, data):
         self._data = data
 

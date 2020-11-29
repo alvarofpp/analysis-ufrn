@@ -5,7 +5,7 @@ from os import listdir
 import streamlit as st
 
 
-class DataAbstract(ABC):
+class ModelAbstract(ABC):
 
     def __init__(self):
         self.__parent_dir = 'data'

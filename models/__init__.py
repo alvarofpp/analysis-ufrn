@@ -1,11 +1,11 @@
-from .DataCollection import DataCollection
-from .DataAbstract import DataAbstract
-
-from .AcervoExemplarModel import AcervoExemplarModel
-from .CursoModel import CursoModel
-from .DiscenteModel import DiscenteModel
-from .DocenteModel import DocenteModel
-from .EmprestimoABModel import EmprestimoABModel
-from .ExemplarModel import ExemplarModel
-from .MatriculaModel import MatriculaModel
-from .TurmaModel import TurmaModel
+# Abstract
+from .ModelAbstract import ModelAbstract
+# Models
+from .AcervoExemplar import AcervoExemplar
+from .Curso import Curso
+from .Discente import Discente
+from .Docente import Docente
+from .EmprestimoAB import EmprestimoAB
+from .Exemplar import Exemplar
+from .Matricula import Matricula
+from .Turma import Turma

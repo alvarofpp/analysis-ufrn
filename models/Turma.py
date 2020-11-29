@@ -1,7 +1,7 @@
-from .DataAbstract import DataAbstract
+from .ModelAbstract import ModelAbstract
 
 
-class TurmaModel(DataAbstract):
+class Turma(ModelAbstract):
 
     def __init__(self):
         super().__init__()

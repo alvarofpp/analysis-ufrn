@@ -1,7 +1,7 @@
 import pandas as pd
 import altair as alt
 import streamlit as st
-from AppJson import AppJson
+from data.AppData import AppData
 from .PageView import PageView
 
 
@@ -10,7 +10,7 @@ class BibliotecaPage(PageView):
     def __init__(self):
         super().__init__()
         self.title = 'Biblioteca'
-        self.app_data = AppJson.get_data_by_key('acervo-biblioteca')
+        self.app_data = AppData.get_data_by_key('acervo-biblioteca')
 
     def template(self):
         # Explicação sobre o trabalho
@@ -46,12 +46,13 @@ class BibliotecaPage(PageView):
         # Quantidade de exemplares por biblioteca
         qeb = pd.DataFrame(self.app_data['charts']['quantidade_exemplares_por_biblioteca'].items(),
                            columns=['Biblioteca', 'Quantidade de Exemplares'])
+        st.write(qeb['Quantidade de Exemplares'].to_list())
+        st.write(qeb['Biblioteca'].to_list())
         st.bar_chart(
             pd.Series(
                 qeb['Quantidade de Exemplares'].to_list(),
                 qeb['Biblioteca'].to_list()
-            ),
-            height=500
+            )
         )
 
         # Biblioteca com maior acervo

@@ -6,9 +6,9 @@ class BibliotecaTreatment(TreatmentAbstract):
     def __init__(self):
         super().__init__({
             'acervo_exemplares': AcervoExemplar(),
+            'exemplares': Exemplar(),
             # 'cursos': CursoModel(),
             # 'emprestimos': EmprestimoABModel(),
-            'exemplares': Exemplar(),
         })
 
     def execute(self):

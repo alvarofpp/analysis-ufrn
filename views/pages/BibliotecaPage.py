@@ -55,13 +55,11 @@ class BibliotecaPage(PageView):
         # Quantidade de exemplares por biblioteca
         qeb = pd.DataFrame(AppData.data_get('acervo-biblioteca.charts.quantidade_exemplares_por_biblioteca').items(),
                            columns=['Biblioteca', 'Quantidade de Exemplares'])
-        st.bar_chart(
-            pd.Series(
-                qeb['Quantidade de Exemplares'].to_list(),
-                qeb['Biblioteca'].to_list()
-            ),
-            height=500
-        )
+        st.altair_chart(alt.Chart(qeb, height=500).mark_bar().encode(
+            x=alt.X('Biblioteca', sort='y'),
+            y='Quantidade de Exemplares',
+            tooltip=['Biblioteca', 'Quantidade de Exemplares']
+        ), use_container_width=True)
 
         # Biblioteca com maior acervo
         biblioteca_max = qeb.iloc[qeb['Quantidade de Exemplares'].idxmax()]
@@ -79,13 +77,11 @@ class BibliotecaPage(PageView):
         st.markdown('## Distribuição dos exemplares por tipo:')
         qet = pd.DataFrame(AppData.data_get('acervo-biblioteca.charts.quantidade_exemplares_por_tipo').items(),
                            columns=['Tipo', 'Quantidade de Exemplares'])
-        st.bar_chart(
-            pd.Series(
-                qet['Quantidade de Exemplares'].to_list(),
-                qet['Tipo'].to_list()
-            ),
-            height=500
-        )
+        st.altair_chart(alt.Chart(qet, height=500).mark_bar().encode(
+            x='Tipo',
+            y='Quantidade de Exemplares',
+            tooltip=['Tipo', 'Quantidade de Exemplares']
+        ), use_container_width=True)
 
         # Tipo com maior acervo
         tipo_max = qet.iloc[qet['Quantidade de Exemplares'].idxmax()]

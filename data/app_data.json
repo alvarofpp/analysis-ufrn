@@ -1,0 +1,62 @@
+{
+  "acervo-biblioteca": {
+    "charts": {
+      "quantidade_exemplares_por_biblioteca": {
+        "BSC03": 52,
+        "Biblioteca Central Zila Mamede": 297988,
+        "Biblioteca Setorial Bertha Cruz Enders - \u00adEscola de Sa\u00fade da UFRN - ESUFRN": 11359,
+        "Biblioteca Setorial Dr. Paulo Bezerra - EMCM/RN": 6898,
+        "Biblioteca Setorial Moacyr de G\u00f3es - CE": 5620,
+        "Biblioteca Setorial Pe. Jaime Diniz - Escola de M\u00fasica - EMUFRN": 24137,
+        "Biblioteca Setorial Prof. Alberto Moreira Campos - \u00adDepartamento de Odontologia": 11037,
+        "Biblioteca Setorial Prof. Dr. Marcelo Bezerra de Melo Tin\u00f4co - DARQ - \u00adCT": 6003,
+        "Biblioteca Setorial Prof. Francisco Gurgel De Azevedo - Instituto Qu\u00edmica - IQ": 3931,
+        "Biblioteca Setorial Prof. Hor\u00e1cio Nicolas Solimo - \u00ad Engenharia Qu\u00edmica - EQ - CT": 3853,
+        "Biblioteca Setorial Prof. Leopoldo Nelson - \u00adCentro de Bioci\u00eancias - CB": 3104,
+        "Biblioteca Setorial Prof. Rodolfo Helinski - Escola Agr\u00edcola de Jundia\u00ed - EAJ": 24417,
+        "Biblioteca Setorial Prof. Ronaldo Xavier de Arruda - CCET": 5484,
+        "Biblioteca Setorial Prof\u00aa. Maria L\u00facia da Costa Bezerra - \u00ad CERES\u00ad-Caic\u00f3": 35243,
+        "Biblioteca Setorial Ver\u00edssimo de Melo - Museu C\u00e2mara Cascudo - MCC": 55,
+        "Biblioteca Setorial da Faculdade de Ci\u00eancias da Sa\u00fade do Trairi - FACISA": 9475,
+        "Biblioteca Setorial de Engenharia Mec\u00e2nica": 3,
+        "Biblioteca Setorial do Centro Ci\u00eancias Sociais Aplicadas - CCSA": 13474,
+        "Biblioteca Setorial do Centro Ci\u00eancias da Sa\u00fade - CCS": 27861,
+        "Biblioteca Setorial do Centro de Ci\u00eancias Humanas, Letras e Artes - CCHLA": 33294,
+        "Biblioteca Setorial do Centro de Ensino Superior do Serid\u00f3 - CERES Currais Novos": 24434,
+        "Biblioteca Setorial do Departamento de Artes - DEART": 5174,
+        "Biblioteca Setorial do N\u00facleo de Educa\u00e7\u00e3o da Inf\u00e2ncia - NEI": 8338,
+        "Biblioteca Setorial do N\u00facleo de Ensino Superior de Macau - NESM": 1521,
+        "Biblioteca Setorial do N\u00facleo de Ensino Superior do Agreste - NESA - Nova Cruz": 2242,
+        "Biblioteca Setorial \u00c1rvore do Conhecimento - Instituto do C\u00e9rebro - ICE": 1061
+      },
+      "quantidade_exemplares_por_tipo": {
+        "Artefato Tridimensional": 2,
+        "Artigo": 22,
+        "CD de \u00c1udio": 2064,
+        "CD-ROM": 1411,
+        "DVD": 898,
+        "DVD-ROM": 41,
+        "Disco": 5090,
+        "Disserta\u00e7\u00e3o": 9764,
+        "Folheto": 9061,
+        "Fotografia": 306,
+        "LD": 112,
+        "Livro": 180562,
+        "Manuscrito": 962,
+        "Mapa": 104,
+        "Monografia Externa": 37,
+        "Monografia UFRN": 3634,
+        "Partitura": 4518,
+        "Peri\u00f3dico": 32,
+        "Perspectiva": 20,
+        "Prancha": 128,
+        "Projeto de Pesquisa": 70,
+        "Relat\u00f3rio Acad\u00eamico": 531,
+        "Re\u00e1lia": 7,
+        "Tese": 2914,
+        "V\u00eddeo": 484
+      }
+    },
+    "selects": {}
+  }
+}

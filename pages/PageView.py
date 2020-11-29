@@ -5,8 +5,9 @@ import streamlit as st
 class PageView(abc.ABC):
 
     def __init__(self):
-        self.title = None
+        self.title = ''
 
+    @st.cache(suppress_st_warning=True)
     def render(self):
         st.title(self.title.upper())
         self.horizontal_rule()

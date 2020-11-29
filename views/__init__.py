@@ -1,2 +1,2 @@
 from .pages import *
-from .tables import *
+from .components import *

@@ -1,14 +1,14 @@
-from models import DataCollection, AcervoExemplarModel, CursoModel, EmprestimoABModel, ExemplarModel
+from models import AcervoExemplar, Exemplar
 from .TreatmentAbstract import TreatmentAbstract
 
 
 class BibliotecaTreatment(TreatmentAbstract):
     def __init__(self):
         super().__init__({
-            'acervo_exemplares': AcervoExemplarModel(),
+            'acervo_exemplares': AcervoExemplar(),
             # 'cursos': CursoModel(),
             # 'emprestimos': EmprestimoABModel(),
-            'exemplares': ExemplarModel(),
+            'exemplares': Exemplar(),
         })
 
     def execute(self):

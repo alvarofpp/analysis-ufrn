@@ -1,6 +1,6 @@
 import json
-from models import CursoModel
-from models.DataCollection import DataCollection
+from models import Curso
+from supports.Collection import Collection
 
 
 # Variável que conterá os dados para o app
@@ -10,11 +10,11 @@ app_json = {
 }
 
 # Carrega os dados
-data_collection = DataCollection({
+data_collection = Collection({
             # 'docentes': Docente(),
             # 'matriculas': Matricula(),
             # 'turmas': Turma(),
-            'cursos': CursoModel(),
+            'cursos': Curso(),
         })
 data_collection.load()
 

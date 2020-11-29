@@ -3,6 +3,7 @@ import altair as alt
 import streamlit as st
 from data.AppData import AppData
 from .PageView import PageView
+from ..components import TableTop
 
 
 class BibliotecaPage(PageView):
@@ -10,7 +11,6 @@ class BibliotecaPage(PageView):
     def __init__(self):
         super().__init__()
         self.title = 'Biblioteca'
-        self.app_data = AppData.get_data_by_key('acervo-biblioteca')
 
     def intro(self):
         # Explicação sobre o trabalho
@@ -34,25 +34,33 @@ class BibliotecaPage(PageView):
         - Recomendações
         """, unsafe_allow_html=True)
 
-    def section_01(self):
         st.markdown("""
         # Acervo
         Aqui consta as análises acerca do acervo das bibliotecas da UFRN.
-        
+        """)
+        exemplares = pd.DataFrame(AppData.data_get('acervo-biblioteca.charts.quantidade_exemplares_por_tipo').items(),
+                           columns=['Tipo', 'Quantidade de Exemplares'])
+
+        st.write('Atualmente as bibliotecas da UFRN possuem um total de {} exemplares em seu acervo, categorizados em {} tipos.'.format(
+            exemplares['Quantidade de Exemplares'].sum(),
+            exemplares.shape[0]
+        ))
+
+    def section_01(self):
+        st.markdown("""
         ## Qual biblioteca possui o maior acervo?
         Para responder essa pergunta, iremos realizar um processo simples de contagem dos exemplares nas bibliotecas.
         """)
 
         # Quantidade de exemplares por biblioteca
-        qeb = pd.DataFrame(self.app_data['charts']['quantidade_exemplares_por_biblioteca'].items(),
+        qeb = pd.DataFrame(AppData.data_get('acervo-biblioteca.charts.quantidade_exemplares_por_biblioteca').items(),
                            columns=['Biblioteca', 'Quantidade de Exemplares'])
-        st.write(qeb['Quantidade de Exemplares'].to_list())
-        st.write(qeb['Biblioteca'].to_list())
         st.bar_chart(
             pd.Series(
                 qeb['Quantidade de Exemplares'].to_list(),
                 qeb['Biblioteca'].to_list()
-            )
+            ),
+            height=500
         )
 
         # Biblioteca com maior acervo
@@ -65,14 +73,11 @@ class BibliotecaPage(PageView):
 
         # Top 5 bibliotecas por tamanho do acervo
         st.write('Top 5 bibliotecas com maior quantidade de exemplares:')
-        table_qeb = qeb.sort_values('Quantidade de Exemplares', ascending=False)[:5].reset_index()
-        table_qeb.index = table_qeb.index + 1
-        table_qeb.drop(columns=['index'], inplace=True)
-        st.table(table_qeb)
+        TableTop.render(qeb, 'Quantidade de Exemplares', 5)
 
         # Exemplares por tipo
         st.markdown('## Distribuição dos exemplares por tipo:')
-        qet = pd.DataFrame(self.app_data['charts']['quantidade_exemplares_por_tipo'].items(),
+        qet = pd.DataFrame(AppData.data_get('acervo-biblioteca.charts.quantidade_exemplares_por_tipo').items(),
                            columns=['Tipo', 'Quantidade de Exemplares'])
         st.bar_chart(
             pd.Series(
@@ -92,10 +97,7 @@ class BibliotecaPage(PageView):
 
         # Top 5 tipos por tamanho do acervo
         st.write('Top 5 tipos com maior quantidade de exemplares:')
-        table_qet = qet.sort_values('Quantidade de Exemplares', ascending=False)[:5].reset_index()
-        table_qet.index = table_qet.index + 1
-        table_qet.drop(columns=['index'], inplace=True)
-        st.table(table_qet)
+        TableTop.render(qet, 'Quantidade de Exemplares', 5)
 
     def section_02(self):
         # st.bar_chart

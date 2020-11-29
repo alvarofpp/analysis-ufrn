@@ -1,2 +1,2 @@
-from .charts import *
 from .pages import *
+from .tables import *

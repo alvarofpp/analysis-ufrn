@@ -7,5 +7,5 @@ from .Discente import Discente
 from .Docente import Docente
 from .EmprestimoAB import EmprestimoAB
 from .Exemplar import Exemplar
-from .Matricula import Matricula
+from .MatriculaComponente import MatriculaComponente
 from .Turma import Turma

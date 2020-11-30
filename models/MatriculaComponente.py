@@ -1,7 +1,7 @@
 from .ModelAbstract import ModelAbstract
 
 
-class Matricula(ModelAbstract):
+class MatriculaComponente(ModelAbstract):
 
     def __init__(self):
         super().__init__()

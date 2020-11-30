@@ -4,9 +4,13 @@ from odufrn_downloader import ODUFRNDownloader
 
 ufrn_data = ODUFRNDownloader()
 packages = [
-    'cursos-ufrn', 'turmas', 'matriculas-componentes',
-    'docentes', 'discentes',
-    'acervo-biblioteca', 'emprestimos-acervos-das-bibliotecas',
+    'cursos-ufrn',
+    'turmas',
+    'matriculas-componentes',
+    'docentes',
+    'discentes',
+    'acervo-biblioteca',
+    'emprestimos-acervos-das-bibliotecas',
 ]
 
 for package in packages:

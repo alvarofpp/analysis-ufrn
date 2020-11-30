@@ -7,7 +7,7 @@ def get_page():
     return {
         "Início": pages.InicioPage(),
         "Biblioteca": pages.BibliotecaPage(),
-        # "Cursos": pages.CursoPage(),
+        "Taxa de Aprovação": pages.TaxaDeAprovacaoPage(),
     }
 
 

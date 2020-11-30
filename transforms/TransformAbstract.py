@@ -3,7 +3,7 @@ from typing import Dict
 from supports import Collection
 
 
-class TreatmentAbstract(abc.ABC):
+class TransformAbstract(abc.ABC):
 
     def __init__(self, data_collection):
         self.app_data = {
@@ -24,4 +24,3 @@ class TreatmentAbstract(abc.ABC):
     @abc.abstractmethod
     def execute(self) -> Dict:
         self.data_collection.load()
-        pass

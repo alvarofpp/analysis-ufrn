@@ -11,8 +11,7 @@ class TaxaDeAprovacaoPage(PageView):
         super().__init__()
         self.title = 'Taxa de Aprovação'
         self.data = {
-            'cursos_por_nivel': AppData.data_get('taxa-aprovacao.selects.cursos_por_nivel'),
-            'cursos_por_id': AppData.data_get('taxa-aprovacao.selects.cursos_por_id'),
+            'cursos': AppData.data_get('taxa-aprovacao.selects.cursos'),
         }
         self.selects = {}
 
@@ -27,12 +26,8 @@ class TaxaDeAprovacaoPage(PageView):
         ''', unsafe_allow_html=True)
 
         self.selects = {
-            'nivel_ensino': st.selectbox('Nível de Ensino', AppData.data_get('taxa-aprovacao.selects.niveis_ensino')),
+            'curso': st.selectbox('Curso', options=list(self.data['cursos'].keys()), format_func=self.format_func_curso),
         }
-        # st.json(test)
-        self.selects['curso'] = st.selectbox('Cursos',
-                                        options=self.data['cursos_por_nivel'][self.selects['nivel_ensino']],
-                                        format_func=self.format_func_curso)
 
     def format_func_curso(self, option):
-        return self.data['cursos_por_id'][option]
+        return self.data['cursos'][str(option)]

@@ -2,7 +2,7 @@ import streamlit as st
 from views import pages
 
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def get_page():
     return {
         "Início": pages.InicioPage(),

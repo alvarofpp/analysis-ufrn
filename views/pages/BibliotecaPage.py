@@ -94,7 +94,7 @@ class BibliotecaPage(PageView):
         # Top 5 tipos por tamanho do acervo
         st.write('Top 5 tipos com maior quantidade de exemplares:')
         TableTop.render(qet, 'Quantidade de Exemplares', 5)
-
+'''
     def section_02(self):
         # st.bar_chart
         st.markdown("""
@@ -112,3 +112,4 @@ class BibliotecaPage(PageView):
         # Livros menos emprestados
         # Quais cursos pegam mais livros emprestados
         pass
+'''

@@ -2,6 +2,7 @@
 from .ModelAbstract import ModelAbstract
 # Models
 from .AcervoExemplar import AcervoExemplar
+from .ComponenteCurricular import ComponenteCurricular
 from .Curso import Curso
 from .Discente import Discente
 from .Docente import Docente

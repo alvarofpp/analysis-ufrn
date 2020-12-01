@@ -11,6 +11,7 @@ packages = [
     'discentes',
     'acervo-biblioteca',
     'emprestimos-acervos-das-bibliotecas',
+    'componentes-curriculares',
 ]
 
 for package in packages:

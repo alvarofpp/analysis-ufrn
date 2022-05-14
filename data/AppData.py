@@ -1,8 +1,8 @@
 import json
 from typing import Dict
 
+from data.Data import DATA_PATH
 import streamlit as st
-from data import Data
 
 
 class AppData:
@@ -22,4 +22,4 @@ class AppData:
     @staticmethod
     @st.cache
     def __data() -> Dict:
-        return json.load(open(Data.PATH))
+        return json.load(open(DATA_PATH))

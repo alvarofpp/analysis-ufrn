@@ -1,11 +1,12 @@
 import json
 from typing import Dict
 
+DATA_PATH = 'data/app_data.json'
+
 
 class Data:
-    PATH = 'data/app_data.json'
 
     @staticmethod
     def save(data: Dict) -> None:
-        with open(Data.PATH, 'w') as outfile:
+        with open(DATA_PATH, 'w') as outfile:
             json.dump(data, outfile, indent=2, sort_keys=True)

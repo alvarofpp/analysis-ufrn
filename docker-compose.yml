@@ -1,0 +1,11 @@
+---
+version: '3.8'
+
+services:
+  analysis-ufrn:
+    build:
+      context: .
+    image: alvarofpp/analysis-ufrn
+    container_name: analysis-ufrn
+    volumes:
+      - .:/app

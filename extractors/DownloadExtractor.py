@@ -1,5 +1,7 @@
 from os import path
+
 from odufrn_downloader import ODUFRNDownloader
+
 from .ExtractorAbstract import ExtractorAbstract
 
 

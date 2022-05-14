@@ -1,4 +1,5 @@
 from models import AcervoExemplar, Exemplar
+
 from .TransformerAbstract import TransformerAbstract
 
 

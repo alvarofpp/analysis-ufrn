@@ -1,5 +1,7 @@
 import json
+
 import streamlit as st
+
 from .PageView import PageView
 
 
@@ -22,13 +24,13 @@ class CursoPage(PageView):
     def intro(self):
         # Explicação sobre o trabalho
         st.write("""
-        Aqui você pode realizar analises sobre os 
+        [WIP] Aqui você pode realizar analises sobre os.
         """)
 
         # Filtros
         self.filters['nivel_ensino'] = st.selectbox(
             'Selecione o nível de ensino:',
-            self.inputs_data['niveis_ensino']
+            self.inputs_data['niveis_ensino'],
         )
 
         # Json com os filtros selecionados
@@ -39,4 +41,3 @@ class CursoPage(PageView):
             'Turma': self.filters['turma'],
             'Professor': self.filters['professor'],
         })
-

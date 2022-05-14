@@ -1,4 +1,5 @@
 import abc
+
 import streamlit as st
 
 
@@ -16,10 +17,12 @@ class PageView(abc.ABC):
 
     @abc.abstractmethod
     def intro(self):
-        raise NotImplemented('You must implement the "intro" method.')
+        raise NotImplementedError('You must implement the "intro" method.')
 
     def horizontal_rule(self):
         st.markdown('----------')
 
     def __get_sections(self):
-        return sorted([dir for dir in self.__dir__() if dir.startswith('section_')])
+        return sorted([
+            directory for directory in self.__dir__() if directory.startswith('section_')
+        ])

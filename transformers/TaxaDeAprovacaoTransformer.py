@@ -57,7 +57,7 @@ class TaxaDeAprovacaoTransformer(TransformerAbstract):
             # Matriculas daquela turma
             matriculas_turma = df_matriculas_componente[
                 df_matriculas_componente['id_turma'] == row['id_turma']
-                ]
+            ]
 
             if matriculas_turma['discente'].count() == 0:
                 continue

@@ -3,7 +3,6 @@ from os import listdir
 import re
 
 import pandas as pd
-import streamlit as st
 
 
 class ModelAbstract(ABC):
@@ -43,6 +42,5 @@ class ModelAbstract(ABC):
         ]
         self._data = pd.concat(dfs, ignore_index=True)
 
-    @st.cache(persist=True)
     def get_data(self):
         return self._data

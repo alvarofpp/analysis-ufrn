@@ -1,8 +1,9 @@
 from models import ComponenteCurricular, Docente, MatriculaComponente, Turma
-from .TransformerAbstract import TransformerAbstract
-import pandas as pd
 import numpy as np
+import pandas as pd
 from tqdm import tqdm
+
+from .TransformerAbstract import TransformerAbstract
 
 
 class TaxaDeAprovacaoTransformer(TransformerAbstract):
@@ -17,29 +18,35 @@ class TaxaDeAprovacaoTransformer(TransformerAbstract):
     def execute(self):
         super().execute()
 
-        ### Taxa de aprovação
+        # Taxa de aprovação
         # Dataframe das turmas
         df_turmas = self.data_collection.get_data_from('turmas')
         df_turmas = df_turmas[df_turmas['situacao_turma'] == 'CONSOLIDADA']
-        df_turmas = df_turmas[['id_turma', 'id_componente_curricular', 'siape', ]]
+        df_turmas = df_turmas[['id_turma', 'id_componente_curricular', 'siape']]
 
         # Dataframe dos docentes
         df_docentes = self.data_collection.get_data_from('docentes')
-        df_docentes = df_docentes[['siape', 'nome', ]]
+        df_docentes = df_docentes[['siape', 'nome']]
 
         # Dataframe das turmas com os docentes
         df_dt = pd.merge(df_turmas, df_docentes, on='siape', how='inner')
 
         # Dataframe dos componentes curriculares
         df_componentes = self.data_collection.get_data_from('componentes_curriculares')
-        df_componentes = df_componentes[['id_componente', 'codigo', 'nome', ]]
+        df_componentes = df_componentes[['id_componente', 'codigo', 'nome']]
         df_componentes['nome'] = df_componentes['codigo'] + ' - ' + df_componentes['nome']
         df_componentes.drop(columns=['codigo'], inplace=True)
 
         # Dataframe das turmas com os docentes e os componentes curriculares
-        df_dtc = pd.merge(df_dt, df_componentes, left_on='id_componente_curricular', right_on='id_componente',
-                          how='inner', suffixes=('_docente', '_componente'))
-        df_dtc.drop(columns=['id_componente', ], inplace=True)
+        df_dtc = pd.merge(
+            df_dt,
+            df_componentes,
+            left_on='id_componente_curricular',
+            right_on='id_componente',
+            how='inner',
+            suffixes=('_docente', '_componente'),
+        )
+        df_dtc.drop(columns=['id_componente'], inplace=True)
         df_dtc['taxa_aprovacao'] = np.nan
 
         # Dataframe das matriculas dos componentes
@@ -100,7 +107,13 @@ class TaxaDeAprovacaoTransformer(TransformerAbstract):
         df_mean = df_dtc.groupby(['id_componente_curricular', 'siape'])['taxa_aprovacao'].mean()
         df_mean = df_mean.reset_index()
         df_mean = pd.merge(df_mean, df_docentes, on='siape', how='inner')
-        df_mean = pd.merge(df_mean, df_componentes, left_on='id_componente_curricular', right_on='id_componente',
-                         suffixes=('_docente', '_componente'), how='inner')
+        df_mean = pd.merge(
+            df_mean,
+            df_componentes,
+            left_on='id_componente_curricular',
+            right_on='id_componente',
+            suffixes=('_docente', '_componente'),
+            how='inner',
+        )
         df_mean.drop(columns=['id_componente'], inplace=True)
         df_mean.to_csv('data/taxas_aprovacao.csv', index=False)

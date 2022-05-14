@@ -1,5 +1,6 @@
 import abc
 from typing import Dict
+
 from supports import Collection
 
 
@@ -22,5 +23,5 @@ class TransformerAbstract(abc.ABC):
         self.data_collection = Collection({})
 
     @abc.abstractmethod
-    def execute(self) -> Dict:
+    def execute(self):
         self.data_collection.load()

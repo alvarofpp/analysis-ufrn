@@ -1,9 +1,12 @@
 # Análises dos dados abertos da UFRN
+
 Análises presentes:
+
 - Acervo da biblioteca;
 - Taxa de aprovação dos componentes curriculares.
 
 ## Reprodução
+
 ```bash
 # Criar environment
 python3 -m venv nome-do-env

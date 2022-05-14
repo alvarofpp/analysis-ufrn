@@ -19,6 +19,10 @@ build: install-hooks
 build-no-cache: install-hooks
 	@docker-compose build --no-cache --pull
 
+.PHONY: extract
+extract:
+	@docker-compose run --rm ${APP_NAME} python extract.py
+
 .PHONY: lint
 lint:
 	@docker pull ${DOCKER_IMAGE_LINTER}
@@ -27,6 +31,14 @@ lint:
 		&& lint-markdown \
 		&& lint-python"
 
+.PHONY: run
+run:
+	@docker-compose run --rm ${APP_NAME} streamlit run app.py
+
 .PHONY: shell
 shell:
 	@docker-compose run --rm ${APP_NAME} bash
+
+.PHONY: transform
+transform:
+	@docker-compose run --rm ${APP_NAME} python transform.py

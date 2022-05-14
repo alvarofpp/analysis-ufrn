@@ -2,14 +2,10 @@ import json
 from typing import Dict
 
 import streamlit as st
+from data import Data
 
 
 class AppData:
-
-    @staticmethod
-    def save(data: Dict) -> None:
-        with open('data/app_data.json', 'w') as outfile:
-            json.dump(data, outfile, indent=2, sort_keys=True)
 
     @staticmethod
     def data_get(key: str) -> Dict:
@@ -26,4 +22,4 @@ class AppData:
     @staticmethod
     @st.cache
     def __data() -> Dict:
-        return json.load(open('data/app_data.json'))
+        return json.load(open(Data.PATH))

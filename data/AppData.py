@@ -20,6 +20,6 @@ class AppData:
         return data
 
     @staticmethod
-    @st.cache
+    @st.cache_data
     def __data() -> Dict:
         return json.load(open(DATA_PATH))

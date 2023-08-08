@@ -29,6 +29,8 @@ lint:
 	@docker run --rm -v ${ROOT}:/app ${DOCKER_IMAGE_LINTER} " \
 		lint-commit ${LINT_COMMIT_TARGET_BRANCH} \
 		&& lint-markdown \
+		&& lint-dockerfile \
+		&& lint-yaml \
 		&& lint-python"
 
 .PHONY: run

@@ -1,7 +1,8 @@
-from models import ComponenteCurricular, Docente, MatriculaComponente, Turma
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+
+from models import ComponenteCurricular, Docente, MatriculaComponente, Turma
 
 from .TransformerAbstract import TransformerAbstract
 
@@ -32,9 +33,11 @@ class TaxaDeAprovacaoTransformer(TransformerAbstract):
         df_dt = pd.merge(df_turmas, df_docentes, on='siape', how='inner')
 
         # Dataframe dos componentes curriculares
-        df_componentes = self.data_collection.get_data_from('componentes_curriculares')
+        df_componentes = self.data_collection \
+            .get_data_from('componentes_curriculares')
         df_componentes = df_componentes[['id_componente', 'codigo', 'nome']]
-        df_componentes['nome'] = df_componentes['codigo'] + ' - ' + df_componentes['nome']
+        df_componentes['nome'] = df_componentes['codigo'] + ' - '  \
+                                 + df_componentes['nome']
         df_componentes.drop(columns=['codigo'], inplace=True)
 
         # Dataframe das turmas com os docentes e os componentes curriculares
@@ -50,7 +53,8 @@ class TaxaDeAprovacaoTransformer(TransformerAbstract):
         df_dtc['taxa_aprovacao'] = np.nan
 
         # Dataframe das matriculas dos componentes
-        df_matriculas_componente = self.data_collection.get_data_from('matriculas_componente')
+        df_matriculas_componente = self.data_collection \
+            .get_data_from('matriculas_componente')
 
         # Calculando a taxa de aprovação de cada turma
         for index, row in tqdm(df_dtc.iterrows(), total=df_dtc.shape[0]):
@@ -104,7 +108,9 @@ class TaxaDeAprovacaoTransformer(TransformerAbstract):
         df_dtc['taxa_aprovacao'] = df_dtc['taxa_aprovacao'].astype(float)
 
         # Dataframe final
-        df_mean = df_dtc.groupby(['id_componente_curricular', 'siape'])['taxa_aprovacao'].mean()
+        df_mean = df_dtc.groupby(
+            ['id_componente_curricular', 'siape']
+        )['taxa_aprovacao'].mean()
         df_mean = df_mean.reset_index()
         df_mean = pd.merge(df_mean, df_docentes, on='siape', how='inner')
         df_mean = pd.merge(

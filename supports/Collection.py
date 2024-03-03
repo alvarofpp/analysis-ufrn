@@ -6,7 +6,7 @@ class Collection:
         self._data = data
 
     def load(self):
-        for key in self._data.keys():
+        for key in self._data:
             self._data[key].load()
 
     def get_all_data(self):

@@ -24,5 +24,6 @@ class PageView(abc.ABC):
 
     def __get_sections(self):
         return sorted([
-            directory for directory in self.__dir__() if directory.startswith('section_')
+            directory for directory in self.__dir__()
+            if directory.startswith('section_')
         ])

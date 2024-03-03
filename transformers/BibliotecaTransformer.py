@@ -16,13 +16,15 @@ class BibliotecaTransformer(TransformerAbstract):
         super().execute()
 
         # Quantidade de exemplares por biblioteca
-        self.app_data['charts']['quantidade_exemplares_por_biblioteca'] = self.data_collection \
+        self.app_data['charts']['quantidade_exemplares_por_biblioteca'] =  \
+            self.data_collection \
             .get_data_from('exemplares')['biblioteca'] \
             .value_counts() \
             .to_dict()
 
         # Quantidade de exemplares por tipo
-        self.app_data['charts']['quantidade_exemplares_por_tipo'] = self.data_collection \
+        self.app_data['charts']['quantidade_exemplares_por_tipo'] =  \
+            self.data_collection \
             .get_data_from('acervo_exemplares')['tipo_material'] \
             .value_counts() \
             .to_dict()

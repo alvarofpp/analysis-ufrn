@@ -3,7 +3,7 @@ APP_NAME=analysis-ufrn
 ROOT=$(shell pwd)
 
 ## Lint
-DOCKER_IMAGE_LINTER=alvarofpp/python:linter
+DOCKER_IMAGE_LINTER=alvarofpp/linter:latest
 LINT_COMMIT_TARGET_BRANCH=origin/main
 
 # Commands

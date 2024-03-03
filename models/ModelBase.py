@@ -1,11 +1,10 @@
-from abc import ABC
-from os import listdir
 import re
+from os import listdir
 
 import pandas as pd
 
 
-class ModelAbstract(ABC):
+class ModelAbstract:
 
     def __init__(self):
         self.__parent_dir = 'data'
@@ -17,7 +16,7 @@ class ModelAbstract(ABC):
         self._sep = ';'
 
     def __get_dir(self) -> str:
-        return '{}/{}/'.format(self.__parent_dir, self.dir)
+        return f'{self.__parent_dir}/{self.dir}/'
 
     def __load_files(self) -> None:
         files_dir = listdir(self.__get_dir())

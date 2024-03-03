@@ -1,8 +1,9 @@
 import json
 from typing import Dict
 
-from data.Data import DATA_PATH
 import streamlit as st
+
+from data.Data import DATA_PATH
 
 
 class AppData:
@@ -22,4 +23,7 @@ class AppData:
     @staticmethod
     @st.cache_data
     def __data() -> Dict:
-        return json.load(open(DATA_PATH))
+        data = None
+        with open(DATA_PATH) as file_data:
+            data = json.load(file_data)
+        return data

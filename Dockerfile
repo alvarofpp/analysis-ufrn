@@ -5,7 +5,8 @@ RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Install requirements
-RUN pip3 install --upgrade pip
+# hadolint ignore=DL3013
+RUN pip3 install --no-cache-dir --upgrade pip
 COPY requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
 

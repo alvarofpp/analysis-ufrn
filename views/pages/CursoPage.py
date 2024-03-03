@@ -12,7 +12,8 @@ class CursoPage(PageView):
         self.title = 'Cursos'
 
         # Dados para os filtros
-        self.inputs_data = json.load(open('data.json'))
+        with open('data.json') as json_file:
+            self.inputs_data = json.load(json_file)
         self.filters = {
             'nivel_ensino': None,
             'curso': None,

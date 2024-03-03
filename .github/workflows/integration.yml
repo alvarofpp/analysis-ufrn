@@ -2,9 +2,6 @@
 name: Integration
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -13,9 +10,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     container:
-      image: alvarofpp/python:linter
+      image: alvarofpp/linter:latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - run: git config --global --add safe.directory $GITHUB_WORKSPACE
@@ -23,4 +20,5 @@ jobs:
       - run: lint-markdown
       - run: lint-dockerfile
       - run: lint-yaml
+      - run: lint-shell-script
       - run: lint-python

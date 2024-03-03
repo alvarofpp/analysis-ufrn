@@ -21,7 +21,7 @@ class DownloadExtractor(ExtractorAbstract):
         ]
 
         for package in packages:
-            if not path.exists('data/{}'.format(package)):
+            if not path.exists(f'data/{package}'):
                 ufrn_data.download_package(package, 'data')
 
         return True

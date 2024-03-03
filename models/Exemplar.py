@@ -1,4 +1,4 @@
-from .ModelAbstract import ModelAbstract
+from .ModelBase import ModelAbstract
 
 
 class Exemplar(ModelAbstract):

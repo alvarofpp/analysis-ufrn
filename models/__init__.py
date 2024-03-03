@@ -1,5 +1,4 @@
 # Abstract
-from .ModelAbstract import ModelAbstract
 # Models
 from .AcervoExemplar import AcervoExemplar  # noqa: I100
 from .ComponenteCurricular import ComponenteCurricular
@@ -9,6 +8,7 @@ from .Docente import Docente
 from .EmprestimoAB import EmprestimoAB
 from .Exemplar import Exemplar
 from .MatriculaComponente import MatriculaComponente
+from .ModelBase import ModelAbstract
 from .Turma import Turma
 
 __all__ = [
